@@ -1,3 +1,5 @@
+ [![WinPatch QA CI](https://github.com/Gabriel-belisario-dev/windows-patch-automation-qa/actions/workflows/ci.yml/badge.svg)](https://github.com/Gabriel-belisario-dev/windows-patch-automation-qa/actions/workflows/ci.yml)
+
 # 🛡️ WinPatch QA Suite
 
 > Automação de Patch Management inteligente com validação de qualidade (QA) integrada.
