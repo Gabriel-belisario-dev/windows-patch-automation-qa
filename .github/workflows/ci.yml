@@ -1,0 +1,31 @@
+name: WinPatch QA CI
+
+# Quando esse robô deve acordar?
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  qa-test:
+    # Onde ele vai rodar? (Máquina Windows limpa)
+    runs-on: windows-latest
+
+    steps:
+    # Passo 1: Baixar o seu código para a máquina virtual
+    - name: Checkout do Código
+      uses: actions/checkout@v3
+
+    # Passo 2: Instalar o Framework de Testes
+    - name: Instalar Pester
+      shell: powershell
+      run: |
+        Write-Host "Instalando Pester..."
+        Install-Module Pester -Force -SkipPublisherCheck
+
+    # Passo 3: O Momento da Verdade (Rodar os testes)
+    - name: Executar Testes Automatizados
+      shell: powershell
+      run: |
+        Invoke-Pester ./tests/Update-DotNet.tests.ps1 -Output Detailed

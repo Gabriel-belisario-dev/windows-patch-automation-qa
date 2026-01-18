@@ -16,17 +16,15 @@ class AgentRequest(BaseModel):
 
 @app.post("/check-compliance")
 def check_version(agent: AgentRequest):
-    """
-    Recebe a versão atual do agente e compara com a versão segura.
-    """
+    """ Recebe a versão atual do agente e compara com a versão segura. """
     print(f"Recebi uma verificação de: {agent.os} rodando versão {agent.current_version}")
     
     # Compara strings de versão
     if agent.current_version < LATEST_DOTNET_VERSION:
         return {
             "status": "outdated",
-            "required_version": LATEST_DOTNET_VERSION,
-            "message": VULNERABILITY_MSG,
+              "required_version": LATEST_DOTNET_VERSION,
+                 "message": VULNERABILITY_MSG,
             "action": "upgrade"
         }
     
